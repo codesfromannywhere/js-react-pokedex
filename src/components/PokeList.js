@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import PokeItem from './PokeItem'
+import PokeItem from "./PokeItem";
+
 
 const PokeList = () => {
 
@@ -21,11 +22,10 @@ const PokeList = () => {
           fetch(`https://pokeapi.co/api/v2/pokemon/${count}/`)
             .then(res => res.json())
             .then(json => {
-
               // jedes Pokemon wird in leeres Array gepusht
               array.push(json)
-              // console.log(array);
-              // setPokemons([...pokemon, json])
+              console.log(array);
+
             })
         }
         // nach der Schleife wird "array" an "setPokemons" geschickt
@@ -34,12 +34,25 @@ const PokeList = () => {
   }, [])
   console.log(pokemon);
 
-
+  pokemon.map((elt) => console.log(elt.name))
 
   return (
     <div>
+      {pokemon.map((elt, i) => {
+        console.log(elt)
+        return (
+          <PokeItem
+            key={i}
+            name={elt.name}
+            image={elt.sprites.other.dream_world.front_default}
+            id={elt.id}
+            allpokemon={elt}
+          />
+        )
+
+      })}
       <h1>PokeList - hier wird gefetcht</h1>
-      <PokeItem />
+
 
     </div>
   )
