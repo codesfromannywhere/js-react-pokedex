@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import PokeItem from './PokeItem'
+import PokeItem from './PokeItem';
 
 const PokeList = () => {
 
@@ -14,7 +14,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=300');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
