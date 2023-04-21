@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 // Components
 import PokeItem from './PokeItem'
 import Menu from './Menu';
+import '../css/PokeList.css'
+import pokemonlogo from '../img/pokemonlogo.svg'
+import animatedpokeball from '../img/animatedpokeball.gif'
 
 const PokeList = () => {
 
@@ -58,11 +61,11 @@ const PokeList = () => {
   }, []);
 
   return (
-    <div>
-      <Menu pokemon={pokemon} />
-      <h1>Pokemon-Party!</h1>
-      {loading && <div>Loading...</div>}
+    <div className="wholePokeList">
+      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo"/>
+      {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+      <div className="pokeListGrid">
       {pokemon.map(pokemon => (
         <PokeItem key={pokemon.id}
           pokemonImage={pokemon.sprites.other.dream_world.front_default}
@@ -72,6 +75,7 @@ const PokeList = () => {
           type={pokemon.types}
         />
       ))}
+      </div>
     </div>
   )
 }

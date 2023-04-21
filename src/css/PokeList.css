@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.pokemonlogo {
+    width: 400px;
+    margin: 10px;
+}
+
+.loading img {
+    width: 300px;
+}
+
+.pokeListGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
