@@ -1,9 +1,13 @@
+// Components
 import PokeList from "../components/PokeList";
+import Menu from '../components/Menu';
 
 const Home = () => {
   return (
     <div>
-      <PokeList />
+      <PokeList>
+        <Menu />
+      </PokeList>
     </div>
   )
 }

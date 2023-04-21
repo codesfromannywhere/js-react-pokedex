@@ -1,5 +1,8 @@
+// Infrastructure
 import { useState, useEffect } from "react";
+// Components
 import PokeItem from './PokeItem'
+import Menu from './Menu';
 
 const PokeList = () => {
 
@@ -56,6 +59,7 @@ const PokeList = () => {
 
   return (
     <div>
+      <Menu pokemon={pokemon} />
       <h1>Pokemon-Party!</h1>
       {loading && <div>Loading...</div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
