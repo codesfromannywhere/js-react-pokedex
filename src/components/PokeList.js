@@ -14,7 +14,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=300');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=30');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -64,6 +64,8 @@ const PokeList = () => {
           pokemonImage={pokemon.sprites.other.dream_world.front_default}
           pokemonId={pokemon.id}
           pokemonName={pokemon.name}
+          completePokemon={pokemon}
+          type={pokemon.types}
         />
       ))}
     </div>
