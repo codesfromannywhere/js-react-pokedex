@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import PokeItem from './PokeItem'
+import '../css/PokeList.css'
+import pokemonlogo from '../img/pokemonlogo.svg'
+import animatedpokeball from '../img/animatedpokeball.gif'
 
 const PokeList = () => {
 
@@ -14,7 +17,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=300');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=500');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -55,10 +58,11 @@ const PokeList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Pokemon-Party!</h1>
-      {loading && <div>Loading...</div>}
+    <div className="wholePokeList">
+      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo"/>
+      {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+      <div className="pokeListGrid">
       {pokemon.map(pokemon => (
         <PokeItem key={pokemon.id}
           pokemonImage={pokemon.sprites.other.dream_world.front_default}
@@ -66,6 +70,7 @@ const PokeList = () => {
           pokemonName={pokemon.name}
         />
       ))}
+      </div>
     </div>
   )
 }
