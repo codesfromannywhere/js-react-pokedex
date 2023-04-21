@@ -1,4 +1,4 @@
-const Menu = (pokemon) => {
+const Menu = (pokemon, handleSubmit) => {
   // Convert the object containing an array ob objects into an array of objects
   const pokemonArr = pokemon.pokemon;
   // Create an array of all the types of Pokemon by flattening the array of objects
@@ -11,9 +11,15 @@ const Menu = (pokemon) => {
   return (
     <div>
       <h1>Menu</h1>
-      {filteredTypes.map(type => (
-        <button key={type} style={{ textTransform: 'uppercase' }}>{type}</button>
-      ))}
+      <form onSubmit={handleSubmit}>
+        {filteredTypes.map(type => (
+          <div key={type}>
+            <input type='checkbox' id={type} />
+            <label htmlFor={type} style={{ textTransform: 'uppercase' }}>{type}</label>
+          </div>
+        ))}
+        <button>SEARCH</button>
+      </form>
     </div>
   )
 }
