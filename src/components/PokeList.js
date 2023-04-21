@@ -1,5 +1,8 @@
+// Infrastructure
 import { useState, useEffect } from "react";
+// Components
 import PokeItem from './PokeItem'
+import Menu from './Menu';
 
 const PokeList = () => {
 
@@ -14,7 +17,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=300');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -56,6 +59,7 @@ const PokeList = () => {
 
   return (
     <div>
+      <Menu pokemon={pokemon} />
       <h1>Pokemon-Party!</h1>
       {loading && <div>Loading...</div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
