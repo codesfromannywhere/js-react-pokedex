@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // Components
 import PokeItem from './PokeItem'
 import Menu from './Menu';
+// Styling
 import '../css/PokeList.css'
 import pokemonlogo from '../img/pokemonlogo.svg'
 import animatedpokeball from '../img/animatedpokeball.gif'
@@ -29,7 +30,6 @@ const PokeList = () => {
         // Convert HTTP object in JSON
         const actualData = await firstResponse.json();
         const pokemonResults = actualData.results;
-        console.log(pokemonResults);
         // Create an empty array to store amount of Pokemon later used to determine the number of loops
         const pokeArray = [];
         // Loop through the results and fetch data of every single Pokemon
@@ -43,7 +43,6 @@ const PokeList = () => {
           // Process the data of the fetch
           const actualPokemonData = await secondResponse.json();
           pokeArray.push(actualPokemonData);
-          console.log(pokeArray);
         }
         // Set the state of the Pokemon data
         setPokemon(pokeArray);
@@ -60,21 +59,30 @@ const PokeList = () => {
 
   }, []);
 
+  // Function to handle the submit of the form and extract the values of the checked checkboxes
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const inputs = Array.from(e.target.querySelectorAll('input:checked'))
+      .map(input => input.value);
+    console.log(inputs);
+  }
+
   return (
     <div className="wholePokeList">
-      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo"/>
+      <Menu pokemon={pokemon} handleOnSubmit={handleOnSubmit} />
+      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       <div className="pokeListGrid">
-      {pokemon.map(pokemon => (
-        <PokeItem key={pokemon.id}
-          pokemonImage={pokemon.sprites.other.dream_world.front_default}
-          pokemonId={pokemon.id}
-          pokemonName={pokemon.name}
-          completePokemon={pokemon}
-          type={pokemon.types}
-        />
-      ))}
+        {pokemon.map(pokemon => (
+          <PokeItem key={pokemon.id}
+            pokemonImage={pokemon.sprites.other.dream_world.front_default}
+            pokemonId={pokemon.id}
+            pokemonName={pokemon.name}
+            completePokemon={pokemon}
+            type={pokemon.types}
+          />
+        ))}
       </div>
     </div>
   )
