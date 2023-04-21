@@ -1,7 +1,9 @@
-const PokeItem = () => {
+const PokeItem = (props) => {
   return (
     <div>
-      <h1>PokeItem</h1>
+      <img src={props.pokemonImage} alt={props.pokemonName} />
+      <p>{props.pokemonId}</p>
+      <p>{props.pokemonName}</p>
     </div>
   )
 }
