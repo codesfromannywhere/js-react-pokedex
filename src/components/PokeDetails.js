@@ -17,7 +17,7 @@ const PokeDetails = () => {
           <div className="pokeInfo">
             <div className="pokeType">
               <h2><img src={pokeballtrans} />TYPE<img src={pokeballtrans} /></h2>
-              <h3>{location.state.types.map((elt) => <p>{elt.type.name}</p>)}</h3>
+              <h3>{location.state.types.map((elt) => <p className={elt.type.name}>{elt.type.name}</p>)}</h3>
             </div>
             <div className="pokeInfoWrapper">
               <h2><img src={pokeballtrans} />ATTACKS & MOVES<img src={pokeballtrans} /></h2>

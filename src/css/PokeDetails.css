@@ -63,8 +63,8 @@
 }
 
 .pokeImage img {
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
 }
 
 .pokeInfo {
@@ -96,6 +96,7 @@
 .pokeType h3 {
     font-size: 25px;
     text-transform: uppercase;
+    border-radius: 10px;
 }
 
 .pokeInfoWrapper h2 img {
@@ -106,12 +107,13 @@
 .pokeAttacks {
     height: 150px;
     overflow: scroll;
-    background-color: rgba(0, 81, 255, 0.274);
+    background-color: #2e2d2db0;
     margin-bottom: 5px;
     border-radius: 20px;
 }
 
 .pokeAttacks p {
+    color: white;
     font-size: 25px;
     text-transform: uppercase;
 }
@@ -148,41 +150,117 @@
     animation-timing-function: linear;
 }
 
-/* .pokeDetailInfo {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
+
+.bug {
+    background-color: #40B902;
+    border-radius: 20px;
+    color: white;
 }
 
-.pokeDetailInfo h2 {
-    font-family: "BarlowCondensed-Regular.ttf";
-    font-size: 50px;
-    text-transform: uppercase;
+.dark {
+    background-color: #1f1e1e;
+    border-radius: 20px;
+    color: white;
 }
 
-.pokeDetailInfo h2 {
-    margin-right: 30px;
+.dragon {
+    background-color: orangered;
+    border-radius: 20px;
+    color: white;
 }
 
-img {
-    width: 100%;
-    margin: 20px;
+.electric {
+    background-color: #F8E601;
+    border-radius: 20px;
+    color: white;
 }
 
-.pokeIDDetails {
-    display: flex;
-    align-items: center;
-    padding: 5px 0;
+.fairy {
+    background-color: #F9C2F9;
+    border-radius: 20px;
+    color: white;
 }
 
-.pokeIDDetails img {
-    margin: 0 10px 0 20px;
-    width: 50px;
+.fighting {
+    background-color: orange;
+    border-radius: 20px;
+    color: white;
 }
 
-.pokeTypes h3 {
-    display: flex;
-    margin: 0 10px;
-} */
+.fire {
+    background-color: red;
+    border-radius: 20px;
+    color: white;
+}
+
+.flying {
+    background-color: rgb(171, 171, 251);
+    border-radius: 20px;
+    color: white;
+}
+
+.ghost {
+    background-color: #5A1E64;
+    border-radius: 20px;
+    color: white;
+}
+
+.grass {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+}
+
+.ground {
+    background-color: rgb(91, 51, 41);
+    border-radius: 20px;
+    color: white;
+}
+
+.ice {
+    background-color: rgb(53, 137, 255);
+    border-radius: 20px;
+    color: white;
+}
+
+.normal {
+    background-color: darkslateblue;
+    border-radius: 20px;
+    color: white;
+}
+
+.plant {
+    background-color: greenyellow;
+    border-radius: 20px;
+    color: white;
+}
+
+.poison {
+    background-color: purple;
+    border-radius: 20px;
+    color: white;
+}
+
+.psychic {
+    background-color: rgb(66, 0, 128);
+    border-radius: 20px;
+    color: white;
+}
+
+.rock {
+    background-color: #2e2d2d;
+    border-radius: 20px;
+    color: white;
+}
+
+.steel {
+    background-color: rgb(161, 159, 159);
+    border-radius: 20px;
+    color: white;
+}
+
+.water {
+    background-color: aqua;
+    border-radius: 20px;
+    color: white;
+}
