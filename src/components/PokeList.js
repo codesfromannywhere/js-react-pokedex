@@ -1,20 +1,27 @@
 // Infrastructure
 import { useState, useEffect } from "react";
 // Components
-import PokeItem from './PokeItem'
+import PokeItem from './PokeItem';
 import Menu from './Menu';
 // Styling
-import '../css/PokeList.css'
-import pokemonlogo from '../img/pokemonlogo.svg'
-import animatedpokeball from '../img/animatedpokeball.gif'
+import '../css/PokeList.css';
+import pokemonlogo from '../img/pokemonlogo.svg';
+import animatedpokeball from '../img/animatedpokeball.gif';
 
 const PokeList = () => {
 
   // Different states to store pokemon data, loading state and error state
+  // State for Pokemon data
   const [pokemon, setPokemon] = useState([]);
+  // State for loading state
   const [loading, setLoading] = useState(true);
+  // State for error handling
   const [error, setError] = useState(null);
+  // State for filtered Pokemon
   const [typeFilteredPokemon, setTypeFilteredPokemon] = useState([]);
+  //! Modal
+  // State for the modal
+  const [isOpen, setIsOpen] = useState(false);
 
   // Fetch of Pokemon date
   useEffect(() => {
@@ -70,6 +77,10 @@ const PokeList = () => {
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+
+      // ! Modal
+      <button className='primaryBtn' onClick={() => setIsOpen(true)}>Open Modal</button>
+
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
       <div className="pokeListGrid">
         {/* Implement ternary operator to render the desired pokemon according to the filter function */}
