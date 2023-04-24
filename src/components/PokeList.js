@@ -7,7 +7,6 @@ import Menu from './Menu';
 import '../css/PokeList.css'
 import pokemonlogo from '../img/pokemonlogo.svg'
 import animatedpokeball from '../img/animatedpokeball.gif'
-import SearchBar from './SearchBar';
 
 const PokeList = () => {
 
@@ -72,7 +71,6 @@ const PokeList = () => {
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
-      <SearchBar />
       <div className="pokeListGrid">
         {/* Implement ternary operator to render the desired pokemon according to the filter function */}
         {typeFilteredPokemon.length > 0 ? (
