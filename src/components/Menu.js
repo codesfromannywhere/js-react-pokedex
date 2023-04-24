@@ -1,4 +1,7 @@
-const Menu = ({ pokemon, onTypeFilterChange }) => {
+// Styling
+import '../css/Menu.css';
+
+const Menu = ({ pokemon, onTypeFilterChange, setIsOpen, isOpen }) => {
 
   // Create an array of all the types of Pokemon by flattening the array of objects
   const pokemonTypes = pokemon.flatMap(pokemon =>
@@ -25,8 +28,10 @@ const Menu = ({ pokemon, onTypeFilterChange }) => {
     return filteredPokemon;
   }
 
+  console.log(isOpen);
+
   return (
-    <div>
+    <div className={isOpen ? 'menuIsVisible' : 'menuIsHidden'}>
       <h1>Menu</h1>
       <form onSubmit={handleOnSubmit}>
         {filteredTypes.map(type => (
@@ -35,7 +40,7 @@ const Menu = ({ pokemon, onTypeFilterChange }) => {
             <label htmlFor={type} style={{ textTransform: 'uppercase' }}>{type}</label>
           </div>
         ))}
-        <button type='submit'>Filter</button>
+        <button type='submit' onClick={() => setIsOpen(false)}>Filter</button>
       </form>
     </div>
   )

@@ -3,8 +3,8 @@ import styles from '../css/Modal.css';
 
 const Modal = ({ setIsOpen }) => {
   return (
-    <>
-      <div> className={styles.darkBG} onclick={() => setIsOpen(false)}
+    <div>
+      <div className={styles.darkBG} onClick={() => setIsOpen(false)}>
         <div className={styles.centered}>
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
@@ -33,7 +33,7 @@ const Modal = ({ setIsOpen }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

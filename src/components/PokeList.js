@@ -19,8 +19,7 @@ const PokeList = () => {
   const [error, setError] = useState(null);
   // State for filtered Pokemon
   const [typeFilteredPokemon, setTypeFilteredPokemon] = useState([]);
-  //! Modal
-  // State for the modal
+  // State to open and close menu component
   const [isOpen, setIsOpen] = useState(false);
 
   // Fetch of Pokemon date
@@ -77,12 +76,11 @@ const PokeList = () => {
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-
-      // ! Modal
-      <button className='primaryBtn' onClick={() => setIsOpen(true)}>Open Modal</button>
-
-      <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
-      <div className="pokeListGrid">
+      {/* Button to open the menu but is only visible when setIsOpen is false */}
+      {!isOpen && <button className='primaryBtn' onClick={() => setIsOpen(true)}>Menu</button>}
+      {/* Menu component when setIsOpen is true */}
+      <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
+      <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
         {/* Implement ternary operator to render the desired pokemon according to the filter function */}
         {typeFilteredPokemon.length > 0 ? (
           typeFilteredPokemon.map(pokemon => (
