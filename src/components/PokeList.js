@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 // Components
 import PokeItem from './PokeItem'
 import Menu from './Menu';
+import SearchBar from './SearchBar'
 // Styling
 import '../css/PokeList.css'
 import pokemonlogo from '../img/pokemonlogo.svg'
@@ -70,6 +71,8 @@ const PokeList = () => {
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+      <SearchBar
+        pokemon={pokemon} />
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
       <div className="pokeListGrid">
         {/* Implement ternary operator to render the desired pokemon according to the filter function */}
@@ -100,3 +103,5 @@ const PokeList = () => {
 }
 
 export default PokeList;
+
+/* Hallo */
