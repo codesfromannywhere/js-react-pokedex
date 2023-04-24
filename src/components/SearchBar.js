@@ -1,6 +1,6 @@
 import SearchPokemon from '../components/PokeSearch';
 import { useState } from 'react';
-
+import '../css/SearchBar.css'
 
 const SearchBar = () => {
     const [pokemon, setPokemon] = useState('');
@@ -16,8 +16,8 @@ const SearchBar = () => {
     };
     return (
         <section>
-            <input value={pokemon} onChange={evt => setPokemon(evt.target.value)} />
-            <button onClick={handleClick}>Search</button>
+            <input value={pokemon} onChange={evt => setPokemon(evt.target.value)} className='searchBarInput'/>
+            <button onClick={handleClick} className='searchBarBtn'>Search</button>
 
             {details && (
                 details.error ? (

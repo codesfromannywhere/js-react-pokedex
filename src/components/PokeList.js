@@ -73,6 +73,10 @@ const PokeList = () => {
           pokemonName={pokemon.name}
           completePokemon={pokemon}
           type={pokemon.types}
+          attack={pokemon.stats[0].base_stat}
+          defense={pokemon.stats[1].base_stat}
+          special={pokemon.stats[2].base_stat}
+          speed={pokemon.stats[4].base_stat}
         />
       ))}
       </div>

@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import '../css/PokeDetails.css'
 import pokeball from '../img/pokeball.png'
 import pokeballtrans from '../img/pokeball_transparent.png'
+import pokelogo from '../img/pokemonlogo.svg'
 
 const PokeDetails = () => {
 
@@ -9,6 +10,7 @@ const PokeDetails = () => {
   console.log(location)
   return (
     <section className="detailPage">
+    <img src={pokelogo} alt="pokemon logo" className="pokemonlogo"/>
     <section className="pokemonDetailContainer">
       <div className="pokeImageAndinfo">
           <div className="pokeImage">
@@ -18,6 +20,17 @@ const PokeDetails = () => {
             <div className="pokeType">
               <h2><img src={pokeballtrans} />TYPE<img src={pokeballtrans} /></h2>
               <h3>{location.state.types.map((elt) => <p className={elt.type.name}>{elt.type.name}</p>)}</h3>
+            </div>
+            <div className="pokeStats">
+            <h2><img src={pokeballtrans} />STATS<img src={pokeballtrans} /></h2>
+              <div className="stats1">
+                <p>ATTACK: {location.state.stats[0].base_stat}</p>
+                <p>DEFENSE: {location.state.stats[1].base_stat}</p>
+              </div>
+              <div className="stats2">
+                <p>SPECIAL: {location.state.stats[2].base_stat}</p>
+                <p>SPEED: {location.state.stats[4].base_stat}</p>
+              </div>
             </div>
             <div className="pokeInfoWrapper">
               <h2><img src={pokeballtrans} />ATTACKS & MOVES<img src={pokeballtrans} /></h2>
