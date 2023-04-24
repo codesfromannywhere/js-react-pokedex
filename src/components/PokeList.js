@@ -77,7 +77,7 @@ const PokeList = () => {
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       {/* Button to open the menu but is only visible when setIsOpen is false */}
-      {!isOpen && <button className='primaryBtn' onClick={() => setIsOpen(true)}>Menu</button>}
+      {!isOpen && <button onClick={() => setIsOpen(true)}>Menu</button>}
       {/* Menu component when setIsOpen is true */}
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
       <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
