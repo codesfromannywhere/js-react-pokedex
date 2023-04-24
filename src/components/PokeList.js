@@ -1,18 +1,26 @@
 // Infrastructure
 import { useState, useEffect } from "react";
 // Components
-import PokeItem from './PokeItem'
+import PokeItem from './PokeItem';
 import Menu from './Menu';
-import '../css/PokeList.css'
-import pokemonlogo from '../img/pokemonlogo.svg'
-import animatedpokeball from '../img/animatedpokeball.gif'
+// Styling
+import '../css/PokeList.css';
+import pokemonlogo from '../img/pokemonlogo.svg';
+import animatedpokeball from '../img/animatedpokeball.gif';
 
 const PokeList = () => {
 
   // Different states to store pokemon data, loading state and error state
+  // State for Pokemon data
   const [pokemon, setPokemon] = useState([]);
+  // State for loading state
   const [loading, setLoading] = useState(true);
+  // State for error handling
   const [error, setError] = useState(null);
+  // State for filtered Pokemon
+  const [typeFilteredPokemon, setTypeFilteredPokemon] = useState([]);
+  // State to open and close menu component
+  const [isOpen, setIsOpen] = useState(false);
 
   // Fetch of Pokemon date
   useEffect(() => {
@@ -29,7 +37,6 @@ const PokeList = () => {
         // Convert HTTP object in JSON
         const actualData = await firstResponse.json();
         const pokemonResults = actualData.results;
-        console.log(pokemonResults);
         // Create an empty array to store amount of Pokemon later used to determine the number of loops
         const pokeArray = [];
         // Loop through the results and fetch data of every single Pokemon
@@ -43,7 +50,6 @@ const PokeList = () => {
           // Process the data of the fetch
           const actualPokemonData = await secondResponse.json();
           pokeArray.push(actualPokemonData);
-          console.log(pokeArray);
         }
         // Set the state of the Pokemon data
         setPokemon(pokeArray);
@@ -60,25 +66,51 @@ const PokeList = () => {
 
   }, []);
 
+  // Update the state of the pokemon according to the filter selection of the user inside the Menu component
+  const handleTypeFilterChange = (filteredPokemon) => {
+    setTypeFilteredPokemon(filteredPokemon);
+  }
+
   return (
     <div className="wholePokeList">
-      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo"/>
+      <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-      <div className="pokeListGrid">
-      {pokemon.map(pokemon => (
-        <PokeItem key={pokemon.id}
-          pokemonImage={pokemon.sprites.other.dream_world.front_default}
-          pokemonId={pokemon.id}
-          pokemonName={pokemon.name}
-          completePokemon={pokemon}
-          type={pokemon.types}
-          attack={pokemon.stats[0].base_stat}
-          defense={pokemon.stats[1].base_stat}
-          special={pokemon.stats[2].base_stat}
-          speed={pokemon.stats[4].base_stat}
-        />
-      ))}
+        {/* Button to open the menu but is only visible when setIsOpen is false */}
+        {!isOpen && <button onClick={() => setIsOpen(true)}>Menu</button>}
+        {/* Menu component when setIsOpen is true */}
+        <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
+        <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
+        {/* Implement ternary operator to render the desired pokemon according to the filter function */}
+        {typeFilteredPokemon.length > 0 ? (
+          typeFilteredPokemon.map(pokemon => (
+            <PokeItem key={pokemon.id}
+              pokemonImage={pokemon.sprites.other.dream_world.front_default}
+              pokemonId={pokemon.id}
+              pokemonName={pokemon.name}
+              completePokemon={pokemon}
+              type={pokemon.types}
+              attack={pokemon.stats[0].base_stat}
+              defense={pokemon.stats[1].base_stat}
+              special={pokemon.stats[2].base_stat}
+              speed={pokemon.stats[4].base_stat}
+            />
+          ))
+        ) : (
+          pokemon.map(pokemon => (
+            <PokeItem key={pokemon.id}
+              pokemonImage={pokemon.sprites.other.dream_world.front_default}
+              pokemonId={pokemon.id}
+              pokemonName={pokemon.name}
+              completePokemon={pokemon}
+              type={pokemon.types}
+              attack={pokemon.stats[0].base_stat}
+              defense={pokemon.stats[1].base_stat}
+              special={pokemon.stats[2].base_stat}
+              speed={pokemon.stats[4].base_stat}
+            />
+          ))
+        )}
       </div>
     </div>
   )

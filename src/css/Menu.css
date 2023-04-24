@@ -1,0 +1,7 @@
+.menuIsVisible {
+    display: block;
+}
+
+.menuIsHidden {
+    display: none;
+}

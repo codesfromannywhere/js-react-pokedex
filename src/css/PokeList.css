@@ -21,3 +21,15 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+
+.pokeListGridHidden {
+    display: none;
+}
+
+.menuIsVisible {
+  display: block;
+}
+
+.menuIsHidden {
+  display: none;
+}
