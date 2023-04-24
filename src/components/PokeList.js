@@ -1,5 +1,5 @@
 // Infrastructure
-import { useState, useEffect } from "react";
+import { useState, useEffect, filteredPokemon } from "react";
 // Components
 import PokeItem from './PokeItem'
 import Menu from './Menu';
@@ -14,6 +14,7 @@ const PokeList = () => {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [typeFilteredPokemon, setTypeFilteredPokemon] = useState([]);
 
   // Fetch of Pokemon date
   useEffect(() => {
@@ -59,31 +60,40 @@ const PokeList = () => {
 
   }, []);
 
-  // Function to handle the submit of the form and extract the values of the checked checkboxes
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const inputs = Array.from(e.target.querySelectorAll('input:checked'))
-      .map(input => input.value);
-    console.log(inputs);
-    console.log(pokemon);
+  // Update the state of the pokemon according to the filter selection of the user inside the Menu component
+  const handleTypeFilterChange = (typeFilteredPokemon) => {
+    setTypeFilteredPokemon(typeFilteredPokemon);
   }
 
   return (
     <div className="wholePokeList">
-      <Menu pokemon={pokemon} />
+      <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       <div className="pokeListGrid">
-        {pokemon.map(pokemon => (
-          <PokeItem key={pokemon.id}
-            pokemonImage={pokemon.sprites.other.dream_world.front_default}
-            pokemonId={pokemon.id}
-            pokemonName={pokemon.name}
-            completePokemon={pokemon}
-            type={pokemon.types}
-          />
-        ))}
+        {/* Implement ternary operator to render the desired pokemon according to the filter function */}
+        {typeFilteredPokemon.length > 0 ? (
+          typeFilteredPokemon.map(pokemon => (
+            <PokeItem key={pokemon.id}
+              pokemonImage={pokemon.sprites.other.dream_world.front_default}
+              pokemonId={pokemon.id}
+              pokemonName={pokemon.name}
+              completePokemon={pokemon}
+              type={pokemon.types}
+            />
+          ))
+        ) : (
+          pokemon.map(pokemon => (
+            <PokeItem key={pokemon.id}
+              pokemonImage={pokemon.sprites.other.dream_world.front_default}
+              pokemonId={pokemon.id}
+              pokemonName={pokemon.name}
+              completePokemon={pokemon}
+              type={pokemon.types}
+            />
+          ))
+        )}
       </div>
     </div>
   )
