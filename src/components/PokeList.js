@@ -1,5 +1,5 @@
 // Infrastructure
-import { useState, useEffect, filteredPokemon } from "react";
+import { useState, useEffect } from "react";
 // Components
 import PokeItem from './PokeItem'
 import Menu from './Menu';
@@ -7,6 +7,7 @@ import Menu from './Menu';
 import '../css/PokeList.css'
 import pokemonlogo from '../img/pokemonlogo.svg'
 import animatedpokeball from '../img/animatedpokeball.gif'
+import SearchBar from './SearchBar';
 
 const PokeList = () => {
 
@@ -61,16 +62,17 @@ const PokeList = () => {
   }, []);
 
   // Update the state of the pokemon according to the filter selection of the user inside the Menu component
-  const handleTypeFilterChange = (typeFilteredPokemon) => {
-    setTypeFilteredPokemon(typeFilteredPokemon);
+  const handleTypeFilterChange = (filteredPokemon) => {
+    setTypeFilteredPokemon(filteredPokemon);
   }
 
   return (
     <div className="wholePokeList">
-      <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+      <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
+      <SearchBar />
       <div className="pokeListGrid">
         {/* Implement ternary operator to render the desired pokemon according to the filter function */}
         {typeFilteredPokemon.length > 0 ? (

@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/:details' element={<PokeDetails />} />

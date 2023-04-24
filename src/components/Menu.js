@@ -5,12 +5,14 @@ const Menu = ({ pokemon, onTypeFilterChange }) => {
     pokemon.types.map(type => type.type.name));
   // Filter out the duplicate types
   const filteredTypes = [...new Set(pokemonTypes)];
+  console.log(filteredTypes);
 
   // Function to handle the submit of the form and extract the values of the checked checkboxes
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const inputs = Array.from(e.target.querySelectorAll('input:checked'))
       .map(input => input.value);
+
     const filteredPokemon = filterForType(inputs)
     // Pass the filtered Pokemon to the PokeList component
     onTypeFilterChange(filteredPokemon);
@@ -35,7 +37,7 @@ const Menu = ({ pokemon, onTypeFilterChange }) => {
             <label htmlFor={type} style={{ textTransform: 'uppercase' }}>{type}</label>
           </div>
         ))}
-        <button type='submit'>SEARCH</button>
+        <button type='submit'>Filter</button>
       </form>
     </div>
   )
