@@ -65,11 +65,12 @@ const PokeList = () => {
     const inputs = Array.from(e.target.querySelectorAll('input:checked'))
       .map(input => input.value);
     console.log(inputs);
+    console.log(pokemon);
   }
 
   return (
     <div className="wholePokeList">
-      <Menu pokemon={pokemon} handleOnSubmit={handleOnSubmit} />
+      <Menu pokemon={pokemon} />
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
       {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
