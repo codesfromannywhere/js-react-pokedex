@@ -1,48 +1,39 @@
-const SearchBar = ({ pokemon, onTypeFilterChange }) => {
-    console.log(pokemon);
+import { useState } from 'react';
 
-    // Create an array of all the types of Pokemon by flattening the array of objects
-    const pokemonNames = pokemon.map((elt) =>
-        elt.name);
-    console.log(pokemonNames);
 
-    // Filter out the duplicate types
-    const filteredNames = [...new Set(pokemonNames)];
-    console.log(filteredNames);
+const SearchBar = ({ pokemon }) => {
+    const [pokemons, setPokemons] = useState('');
+    const [details, setDetails] = useState(null);
+    // console.log(pokemon);
+    // console.log(details);
 
-    // Function to handle the submit of the form and extract the values of the checked checkboxes
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        const inputs = Array.from(e.target.querySelectorAll('input:checked'))
-            .map(input => input.value);
-        // Call the filterForType function for filtering pokemon state
-        const filteredPokemon = filterForType(inputs)
-        // Pass the filtered Pokemon to the PokeList component
-        onTypeFilterChange(filteredPokemon);
-    }
-    // Filter the Pokemon for the types that are checked
-    const filterForType = (inputs) => {
-        const filteredPokemon = pokemon.filter(pokemon => {
-            return pokemon.types.some(type => {
-                return inputs.includes(type.type.name);
-            })
-        });
-        return filteredPokemon;
-    }
+    const handleClick = async () => {
+        try {
+            const response = await pokemon.Search(pokemons)
+            setDetails(response);
+        } catch (err) {
+            setDetails({ error: "Pokemon not found" }); // leerer Pokeball als IMG?
+        }
+
+    };
+    // console.log(details);
 
     return (
-        <div>
-            <h1>Menu</h1>
-            <form onSubmit={handleOnSubmit}>
-                {filteredNames.map(type => (
-                    <div key={type}>
-                        <input type='text' placeholder="Search for Pokemons" />
+        <section>
+            <input value={pokemons} onChange={evt => setPokemons(evt.target.value)} />
+            <button onClick={handleClick}>Search</button>
+
+            {details && (
+                details.error ? (
+                    <h1>{details.error}</h1>
+                ) : (
+                    <div>
+                        <h1>{details.name}</h1>
+                        <img src={details.sprites.other.dream_world.front_default} alt="pokemon" />
                     </div>
                 ))}
-                <button type='submit'>Search Pokemons</button>
-            </form>
-        </div>
-    )
+        </section>
+    );
 }
 
 export default SearchBar;
