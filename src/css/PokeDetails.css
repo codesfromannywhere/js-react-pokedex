@@ -24,6 +24,12 @@
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 ::-webkit-scrollbar {
 	width: 7.5px;
     height: 0px;
@@ -57,7 +63,7 @@
     justify-content: space-between;
     flex-direction: column;
     width: 800px;
-    height: 500px;
+    height: 520px;
     border-radius: 34px;
     border: 4px solid #2e2d2d;
 }
@@ -131,8 +137,38 @@
     margin: 0 5px;
 }
 
+.stats1 {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stats1 p {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.stats1 p span {
+    color: #0A285F;
+}
+
+.stats2 {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stats2 p {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.stats2 p span {
+    color: #0A285F;
+}
+
 .pokeAttacks {
-    height: 80px;
+    height: 95px;
     overflow: scroll;
     background-color: #2e2d2d9f;
     margin-bottom: 5px;

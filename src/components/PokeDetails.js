@@ -3,6 +3,7 @@ import '../css/PokeDetails.css'
 import pokeball from '../img/pokeball.png'
 import pokeballtrans from '../img/pokeball_transparent.png'
 import pokelogo from '../img/pokemonlogo.svg'
+import Back from "../components/Back";
 
 const PokeDetails = () => {
 
@@ -22,14 +23,14 @@ const PokeDetails = () => {
               <h3>{location.state.types.map((elt) => <p className={elt.type.name}>{elt.type.name}</p>)}</h3>
             </div>
             <div className="pokeStats">
-            <h2><img src={pokeballtrans} />STATS<img src={pokeballtrans} /></h2>
+            <h2><img src={pokeballtrans} />STATISTICS<img src={pokeballtrans} /></h2>
               <div className="stats1">
-                <p>ATTACK: {location.state.stats[0].base_stat}</p>
-                <p>DEFENSE: {location.state.stats[1].base_stat}</p>
+                <p><span>ATTACK:</span> {location.state.stats[0].base_stat}</p>
+                <p><span>DEFENSE:</span> {location.state.stats[1].base_stat}</p>
               </div>
               <div className="stats2">
-                <p>SPECIAL: {location.state.stats[2].base_stat}</p>
-                <p>SPEED: {location.state.stats[4].base_stat}</p>
+                <p><span>SPECIAL:</span> {location.state.stats[2].base_stat}</p>
+                <p><span>SPEED:</span> {location.state.stats[4].base_stat}</p>
               </div>
             </div>
             <div className="pokeInfoWrapper">
@@ -48,6 +49,7 @@ const PokeDetails = () => {
         <h2 className="detailPokeName">{location.state.name}</h2>
       </div>
     </section>
+    <Back/>
     </section>
   )
 }
