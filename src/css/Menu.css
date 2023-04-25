@@ -5,12 +5,14 @@
 
 .menuIsVisible {
     display: block;
+    height: 100vh;
 }
 
 .menuIsHidden {
     display: none;
 }
 
+<<<<<<< HEAD
 input[type="checkbox"] {
     /* opacity: 50%; */
     margin-left: 10px;
@@ -23,6 +25,10 @@ input[type="checkbox"] {
     -webkit-text-stroke: 1.5px #0075BE;
     color: #FFCC00;
 }
+=======
+
+
+>>>>>>> a55c4ecabb0970372aaa56acef3fa6432047d243
 
 .form {
     margin-top: 30px;
@@ -42,6 +48,7 @@ label {
     width: 100px;
 }
 
+<<<<<<< HEAD
 .filterBtn {
     font-family: "BarlowCondensed-Regular.ttf";
     font-weight: 900;
@@ -62,6 +69,8 @@ label {
 }
 
 
+=======
+>>>>>>> a55c4ecabb0970372aaa56acef3fa6432047d243
 .bug {
     width: 150px;
     display: flex;
@@ -71,6 +80,7 @@ label {
     border-radius: 20px;
     color: white;
 }
+
 
 .dark {
     width: 150px;
