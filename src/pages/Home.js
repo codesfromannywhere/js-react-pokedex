@@ -14,7 +14,7 @@ const Home = () => {
 
   const toggleTheme = () => {
     if (theme === 'light') {
-      setTheme('dark');
+      setTheme('background');
     } else {
       setTheme('light');
     }
