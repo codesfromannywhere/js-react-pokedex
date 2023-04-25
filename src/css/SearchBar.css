@@ -8,6 +8,15 @@ section {
     margin: 20px;
 }
 
+.search2 {
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
 .searchBarInput {
     width: 300px;
     padding: 10px;

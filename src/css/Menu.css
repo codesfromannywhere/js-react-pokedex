@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "BarlowCondensed-Regular.ttf";
+    src: url("../fonts/BarlowCondensed-Regular.ttf");
+}
+
 .menuIsVisible {
     display: block;
 }
@@ -8,6 +13,15 @@
 
 input[type="checkbox"] {
     /* opacity: 50%; */
+    margin-left: 10px;
+}
+
+.chooseType {
+    font-family: "BarlowCondensed-Regular.ttf";
+    font-size: 50px;
+    font-weight: 500;
+    -webkit-text-stroke: 1.5px #0075BE;
+    color: #FFCC00;
 }
 
 .form {
@@ -20,16 +34,32 @@ input[type="checkbox"] {
 }
 
 label {
-    font-size: 20px;
+    font-family: "BarlowCondensed-Regular.ttf";
+    font-size: 25px;
     font-weight: 900;
     border-radius: 10px;
     padding: 5px 10px 5px 0;
     width: 100px;
 }
 
+.filterBtn {
+    font-family: "BarlowCondensed-Regular.ttf";
+    font-weight: 900;
+    width: 150px;
+    border-radius: 20px;
+    border: 2px dotted #0075BE;
+    background-color: #FFCC00;
+    color: #0075BE;
+    font-size: 25px;
+}
 
-
-
+.filterBtn:hover {
+    cursor: pointer;
+    border: 2px dotted #FFCC00;
+    background-color: #0075BE;
+    color: #FFCC00;
+    font-size: 25px;
+}
 
 
 .bug {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../css/SearchBar.css'
 
 const SearchBar = ({ pokemon, onSearchChange }) => {
     // console.log(pokemon);
@@ -25,10 +26,7 @@ const SearchBar = ({ pokemon, onSearchChange }) => {
 
     return (
         <section>
-            <label>
-                Search:
-            </label>
-            <input onChange={filterBySearch} />
+            <input className='search2' onChange={filterBySearch} placeholder='SEARCH POKEMON'/>
         </section>
     )
 }
