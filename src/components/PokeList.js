@@ -6,9 +6,16 @@ import Menu from './Menu';
 import SearchBar2 from './SearchBar2'
 
 // Styling
+<<<<<<< HEAD
 import '../css/PokeList.css';
 import pokemonlogo from '../img/pokemonlogo.svg';
 import animatedpokeball from '../img/animatedpokeball.gif';
+=======
+import '../css/PokeList.css'
+import pokemonlogo from '../img/pokemonlogo.svg'
+import animatedpokeball from '../img/animatedpokeball.gif'
+// import LightDarkMode from "./LightDarkMode";
+>>>>>>> lananew
 
 const PokeList = () => {
 
@@ -25,13 +32,18 @@ const PokeList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchPokemon, setSearchPokemon] = useState([])
 
+
   // Fetch of Pokemon date
   useEffect(() => {
 
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
+<<<<<<< HEAD
         const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=50');
+=======
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000');
+>>>>>>> lananew
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -74,6 +86,7 @@ const PokeList = () => {
     setTypeFilteredPokemon(filteredPokemon);
   }
 
+<<<<<<< HEAD
   // Update the state of the pokemon according to the Search Function
   const handleSearchPokemon = (filteredList) => {
     setSearchPokemon(filteredList);
@@ -114,6 +127,19 @@ const PokeList = () => {
             ))
           )}
 
+=======
+
+
+  return (
+    <div >
+      <div className="wholePokeList">
+        <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
+        {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
+        {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+
+        <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} />
+        <div className="pokeListGrid">
+>>>>>>> lananew
           {/* Implement ternary operator to render the desired pokemon according to the filter function */}
           {typeFilteredPokemon.length > 0 ? (
             typeFilteredPokemon.map(pokemon => (
@@ -123,10 +149,13 @@ const PokeList = () => {
                 pokemonName={pokemon.name}
                 completePokemon={pokemon}
                 type={pokemon.types}
+<<<<<<< HEAD
                 attack={pokemon.stats[0].base_stat}
                 defense={pokemon.stats[1].base_stat}
                 special={pokemon.stats[2].base_stat}
                 speed={pokemon.stats[4].base_stat}
+=======
+>>>>>>> lananew
               />
             ))
           ) : (
@@ -137,10 +166,13 @@ const PokeList = () => {
                 pokemonName={pokemon.name}
                 completePokemon={pokemon}
                 type={pokemon.types}
+<<<<<<< HEAD
                 attack={pokemon.stats[0].base_stat}
                 defense={pokemon.stats[1].base_stat}
                 special={pokemon.stats[2].base_stat}
                 speed={pokemon.stats[4].base_stat}
+=======
+>>>>>>> lananew
               />
             ))
           )}

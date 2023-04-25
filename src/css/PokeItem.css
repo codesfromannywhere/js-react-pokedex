@@ -5,22 +5,25 @@
 
 @-webkit-keyframes rotate-center {
     0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
     }
+
     100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
+
 @keyframes rotate-center {
     0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
     }
+
     100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -38,7 +41,7 @@
     width: 250px;
     height: 250px;
     border-radius: 30px;
-    background: radial-gradient(circle, rgba(255,255,255,1) 23%, rgba(255,204,0,1) 65%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 23%, rgba(255, 204, 0, 1) 65%);
 }
 
 .pokeItemInfo {
@@ -70,7 +73,7 @@
 
 .pokeItemInfo .pokeID {
     display: flex;
-    align-items: center ;
+    align-items: center;
 }
 
 .pokeItemInfo .pokeID img {
