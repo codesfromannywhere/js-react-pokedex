@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 // Components
 import PokeItem from './PokeItem';
 import Menu from './Menu';
+import SearchBar2 from './SearchBar2'
+
 // Styling
 import '../css/PokeList.css';
 import pokemonlogo from '../img/pokemonlogo.svg';
@@ -21,6 +23,7 @@ const PokeList = () => {
   const [typeFilteredPokemon, setTypeFilteredPokemon] = useState([]);
   // State to open and close menu component
   const [isOpen, setIsOpen] = useState(false);
+  const [searchPokemon, setSearchPokemon] = useState([])
 
   // Fetch of Pokemon date
   useEffect(() => {
@@ -28,7 +31,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=300');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=50');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -71,38 +74,65 @@ const PokeList = () => {
     setTypeFilteredPokemon(filteredPokemon);
   }
 
+  // Update the state of the pokemon according to the Search Function
+  const handleSearchPokemon = (filteredList) => {
+    setSearchPokemon(filteredList);
+  }
+
   return (
     <div className="wholePokeList">
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
-      {loading && <div className="loading"><img src={animatedpokeball} alt="animated pokeball" /></div>}
+      {loading && <div className="loading">
+        <img src={animatedpokeball} alt="animated pokeball" />
+      </div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       {/* Button to open the menu but is only visible when setIsOpen is false */}
       {!isOpen && <button onClick={() => setIsOpen(true)}>Menu</button>}
       {/* Menu component when setIsOpen is true */}
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
+      <SearchBar2
+        key={pokemon.id}
+        pokemon={pokemon}
+        onSearchChange={handleSearchPokemon}
+      />
       <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
-        {/* Implement ternary operator to render the desired pokemon according to the filter function */}
-        {typeFilteredPokemon.length > 0 ? (
-          typeFilteredPokemon.map(pokemon => (
-            <PokeItem key={pokemon.id}
-              pokemonImage={pokemon.sprites.other.dream_world.front_default}
-              pokemonId={pokemon.id}
-              pokemonName={pokemon.name}
-              completePokemon={pokemon}
-              type={pokemon.types}
-            />
-          ))
-        ) : (
-          pokemon.map(pokemon => (
-            <PokeItem key={pokemon.id}
-              pokemonImage={pokemon.sprites.other.dream_world.front_default}
-              pokemonId={pokemon.id}
-              pokemonName={pokemon.name}
-              completePokemon={pokemon}
-              type={pokemon.types}
-            />
-          ))
-        )}
+        <div className="pokeListGrid">
+          {/* Implement ternary operator to render the desired pokemon according to the Search function */}
+          {searchPokemon.length > 0 && (
+            searchPokemon.map(pokemon => (
+              <PokeItem key={pokemon.id}
+                pokemonImage={pokemon.sprites.other.dream_world.front_default}
+                pokemonId={pokemon.id}
+                pokemonName={pokemon.name}
+                completePokemon={pokemon}
+                type={pokemon.types}
+              />
+            ))
+          )}
+
+          {/* Implement ternary operator to render the desired pokemon according to the filter function */}
+          {typeFilteredPokemon.length > 0 ? (
+            typeFilteredPokemon.map(pokemon => (
+              <PokeItem key={pokemon.id}
+                pokemonImage={pokemon.sprites.other.dream_world.front_default}
+                pokemonId={pokemon.id}
+                pokemonName={pokemon.name}
+                completePokemon={pokemon}
+                type={pokemon.types}
+              />
+            ))
+          ) : (
+            pokemon.map(pokemon => (
+              <PokeItem key={pokemon.id}
+                pokemonImage={pokemon.sprites.other.dream_world.front_default}
+                pokemonId={pokemon.id}
+                pokemonName={pokemon.name}
+                completePokemon={pokemon}
+                type={pokemon.types}
+              />
+            ))
+          )}
+        </div>
       </div>
     </div>
   )
