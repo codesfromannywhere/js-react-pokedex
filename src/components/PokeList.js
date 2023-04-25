@@ -91,12 +91,12 @@ const PokeList = () => {
       {!isOpen && <button onClick={() => setIsOpen(true)}>Menu</button>}
       {/* Menu component when setIsOpen is true */}
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
+      <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
       <SearchBar2
         key={pokemon.id}
         pokemon={pokemon}
         onSearchChange={handleSearchPokemon}
       />
-      <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
         <div className="pokeListGrid">
           {/* Implement ternary operator to render the desired pokemon according to the Search function */}
           {searchPokemon.length > 0 && (
@@ -131,18 +131,20 @@ const PokeList = () => {
               />
             ))
           ) : (
-            pokemon.map(pokemon => (
-              <PokeItem key={pokemon.id}
-                pokemonImage={pokemon.sprites.other.dream_world.front_default}
-                pokemonId={pokemon.id}
-                pokemonName={pokemon.name}
-                completePokemon={pokemon}
-                type={pokemon.types}
-                attack={pokemon.stats[0].base_stat}
-                defense={pokemon.stats[1].base_stat}
-                special={pokemon.stats[2].base_stat}
-                speed={pokemon.stats[4].base_stat}
-              />
+            searchPokemon.length > 0 ? null : (
+              pokemon.map(pokemon => (
+                <PokeItem key={pokemon.id}
+                  pokemonImage={pokemon.sprites.other.dream_world.front_default}
+                  pokemonId={pokemon.id}
+                  pokemonName={pokemon.name}
+                  completePokemon={pokemon}
+                  type={pokemon.types}
+                  attack={pokemon.stats[0].base_stat}
+                  defense={pokemon.stats[1].base_stat}
+                  special={pokemon.stats[2].base_stat}
+                  speed={pokemon.stats[4].base_stat}
+                />
+            )
             ))
           )}
         </div>
