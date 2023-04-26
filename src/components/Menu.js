@@ -31,7 +31,6 @@ const Menu = ({ pokemon, onTypeFilterChange, setIsOpen, isOpen }) => {
 
 
   return (
-<<<<<<< HEAD
     <div className={isOpen ? 'menuIsVisible' : 'menuIsHidden'}>
       <h2 className='chooseType'>CHOOSE TYPE</h2>
       <form onSubmit={handleOnSubmit} className="form">
@@ -44,20 +43,6 @@ const Menu = ({ pokemon, onTypeFilterChange, setIsOpen, isOpen }) => {
         <button type='submit' onClick={() => setIsOpen(false)} className='filterBtn'>APPLY</button>
       </form>
     </div>
-=======
-      <div className={isOpen ? 'menuIsVisible' : 'menuIsHidden'}>
-        <h1>Menu</h1>
-        <form onSubmit={handleOnSubmit} className="form">
-          {filteredTypes.map(type => (
-            <div key={type} className={type}>
-              <input type='checkbox' id={type} value={type} />
-              <label htmlFor={type} style={{ textTransform: 'uppercase' }}>{type}</label>
-            </div>
-          ))}
-          <button type='submit' onClick={() => setIsOpen(false)}>Filter</button>
-        </form>
-      </div>
->>>>>>> a55c4ecabb0970372aaa56acef3fa6432047d243
   )
 }
 

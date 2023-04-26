@@ -9,6 +9,7 @@ import SearchBar2 from './SearchBar2'
 import '../css/PokeList.css';
 import pokemonlogo from '../img/pokemonlogo.svg';
 import animatedpokeball from '../img/animatedpokeball.gif';
+import { Link } from "react-router-dom";
 
 const PokeList = () => {
 
@@ -32,7 +33,7 @@ const PokeList = () => {
     const getData = async () => {
       try {
         // First fetch to get the amount of Pokemon
-        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=50');
+        const firstResponse = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=200');
         // Throw error in case of an HTTP error
         if (!firstResponse.ok) {
           throw new Error(`This is an HTTP error: The status is ${firstResponse.status}`);
@@ -88,13 +89,15 @@ const PokeList = () => {
 
   return (
     <div className="wholePokeList">
+      <Link to='/'>
       <img src={pokemonlogo} alt="pokemon logo" className="pokemonlogo" />
+      </Link>
       {loading && <div className="loading">
         <img src={animatedpokeball} alt="animated pokeball" />
       </div>}
       {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
       {/* Button to open the menu but is only visible when setIsOpen is false */}
-      {!isOpen && <button onClick={() => setIsOpen(true)}>Menu</button>}
+      {!isOpen && <button className="filterBtn" onClick={() => setIsOpen(true)}>TYPES</button>}
       {/* Menu component when setIsOpen is true */}
       <Menu pokemon={pokemon} onTypeFilterChange={handleTypeFilterChange} setIsOpen={setIsOpen} isOpen={isOpen} />
       <div className={isOpen ? 'pokeListGridHidden' : 'pokeListGrid'}>
