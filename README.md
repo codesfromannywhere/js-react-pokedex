@@ -4,11 +4,10 @@
   
 Ein Pokedex erstellt mit der Poke API!
 
-🚀 Demo 
+ ### 🚀 Demo 
 
 
-🧐 Features
-## 🌐 Socials:
+### 🧐 Features
 
 *   Navigation
 *   Filteroptions 
@@ -16,21 +15,21 @@ Ein Pokedex erstellt mit der Poke API!
 *   Detailspage
 
   
-💻 Built with
+### 💻 Built with
 
 *   HTML
 *   SCSS
 *   REACT
 *   FIGMA
 
-👥 Authors
+### 👥 Authors
 
 - <a href="https://github.com/BenjaminHoefer" target="_blank">BenjaminHoefer</a>
 - <a href="https://github.com/LanaxCode" target="_blank">LanaxCode</a>
 - <a href="https://github.com/ClaudioSUPERCODE" target="_blank">ClaudioSUPERCODE</a>
 
 
-📷 Project Screenshots:
+### 📷 Project Screenshots:
 #### Homepage:
 
 #### Filteroptions:
@@ -43,7 +42,7 @@ Ein Pokedex erstellt mit der Poke API!
 
 
 
-# Getting Started with Create React App
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
