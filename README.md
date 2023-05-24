@@ -4,17 +4,13 @@
   
 Ein Pokedex erstellt mit der Poke API!
 
-## 🚀 Demo:
-
-
-## 🧐 Socials
+## 🧐 Features
 
 *   Navigation
 *   Filteroptions 
 *   Dark-Light-Mode
 *   Searchbar with Livesearch
 *   Detailspage
-
   
 ## 💻 Built with
 
