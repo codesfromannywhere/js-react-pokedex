@@ -8,6 +8,7 @@ Ein Pokedex erstellt mit der Poke API!
 
 
 🧐 Features
+## 🌐 Socials:
 
 *   Navigation
 *   Filteroptions 
